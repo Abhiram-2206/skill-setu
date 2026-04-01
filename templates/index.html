@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillPilot AI — Navigate Your Future</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="landing-page">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2L18 7V13L10 18L2 13V7L10 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
+                </svg>
+            </div>
+            <span>SkillPilot</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/dashboard" class="nav-cta">Launch App →</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-section">
+    <!-- Ambient background orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="hero-content">
+        <div class="hero-badge reveal">
+            <span class="badge-dot"></span>
+            AI-Powered Career Intelligence
+        </div>
+
+        <h1 class="hero-headline reveal reveal-delay-1">
+            Navigate Your<br>
+            <span class="gradient-text">Skill Journey</span><br>
+            with Precision
+        </h1>
+
+        <p class="hero-sub reveal reveal-delay-2">
+            Upload your resume or enter your skills. Our AI maps your gaps,<br>
+            builds your roadmap, and gives you a timeline that actually works.
+        </p>
+
+        <div class="hero-actions reveal reveal-delay-3">
+            <a href="/dashboard" class="btn-primary">
+                <span>Start for free</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <a href="/about" class="btn-ghost">See how it works</a>
+        </div>
+
+        <div class="hero-stat-row reveal reveal-delay-4">
+            <div class="stat">
+                <span class="stat-num">3</span>
+                <span class="stat-label">Career paths</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-num">AI</span>
+                <span class="stat-label">Powered analysis</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Personalized</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating dashboard preview -->
+    <div class="hero-visual reveal reveal-delay-3">
+        <div class="preview-card">
+            <div class="preview-header">
+                <div class="preview-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <span class="preview-title">AI Dashboard</span>
+            </div>
+            <div class="preview-score-ring">
+                <svg viewBox="0 0 120 120" width="120" height="120">
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="10"/>
+                    <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ringGrad)" stroke-width="10"
+                        stroke-dasharray="251" stroke-dashoffset="75" stroke-linecap="round"
+                        transform="rotate(-90 60 60)" class="ring-animate"/>
+                    <defs>
+                        <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#60a5fa"/>
+                            <stop offset="100%" stop-color="#a78bfa"/>
+                        </linearGradient>
+                    </defs>
+                    <text x="60" y="56" text-anchor="middle" fill="white" font-size="20" font-weight="700" font-family="Syne">70%</text>
+                    <text x="60" y="72" text-anchor="middle" fill="rgba(255,255,255,0.5)" font-size="8" font-family="DM Sans">Score</text>
+                </svg>
+            </div>
+            <div class="preview-skills">
+                <div class="preview-skill">
+                    <span>Python</span>
+                    <div class="mini-bar"><div class="mini-fill" style="width:90%;"></div></div>
+                </div>
+                <div class="preview-skill">
+                    <span>Machine Learning</span>
+                    <div class="mini-bar"><div class="mini-fill" style="width:55%;"></div></div>
+                </div>
+                <div class="preview-skill">
+                    <span>Statistics</span>
+                    <div class="mini-bar"><div class="mini-fill" style="width:30%;"></div></div>
+                </div>
+            </div>
+            <div class="preview-tag">🤖 Roadmap ready</div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section">
+    <div class="section-inner">
+        <div class="section-label reveal">How it works</div>
+        <h2 class="section-title reveal reveal-delay-1">
+            Three steps to your<br><span class="gradient-text">learning clarity</span>
+        </h2>
+
+        <div class="features-grid">
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14l-4-4 1.41-1.41L11 13.17l6.59-6.59L19 8l-8 8z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="feature-num">01</div>
+                <h3>Input Your Skills</h3>
+                <p>Type your current skills or paste them in. No setup required — just tell us where you are.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="feature-num">02</div>
+                <h3>AI Analyzes Gaps</h3>
+                <p>Our TF-IDF model compares your profile against role requirements and finds what's missing.</p>
+            </div>
+
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="feature-num">03</div>
+                <h3>Get Your Roadmap</h3>
+                <p>Receive a prioritized learning path with curated courses, timelines, and monthly milestones.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-section reveal">
+    <div class="cta-orb"></div>
+    <div class="cta-inner">
+        <h2>Ready to close the gap?</h2>
+        <p>Start your personalized analysis in under 60 seconds.</p>
+        <a href="/dashboard" class="btn-primary btn-large">
+            <span>Launch SkillPilot</span>
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-logo">
+            <div class="logo-icon small">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2L18 7V13L10 18L2 13V7L10 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
+                </svg>
+            </div>
+            <span>SkillPilot AI</span>
+        </div>
+        <p class="footer-copy">Built for learners navigating the future of tech.</p>
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+</footer>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

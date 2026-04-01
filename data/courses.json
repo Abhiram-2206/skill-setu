@@ -1,0 +1,233 @@
+{
+  "Python": {
+    "free": [
+      {
+        "title": "Python for Everybody",
+        "link": "https://www.coursera.org/specializations/python"
+      },
+      {
+        "title": "Python Full Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
+      },
+      {
+        "title": "Learn Python - Codecademy",
+        "link": "https://www.codecademy.com/learn/learn-python-3"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Complete Python Bootcamp - Udemy",
+        "link": "https://www.udemy.com/course/complete-python-bootcamp/"
+      },
+      {
+        "title": "Python for Data Science - Coursera",
+        "link": "https://www.coursera.org/learn/python-for-applied-data-science-ai"
+      },
+      {
+        "title": "100 Days of Code Python - Udemy",
+        "link": "https://www.udemy.com/course/100-days-of-code/"
+      }
+    ]
+  },
+
+  "Machine Learning": {
+    "free": [
+      {
+        "title": "Machine Learning by Andrew Ng",
+        "link": "https://www.coursera.org/learn/machine-learning"
+      },
+      {
+        "title": "Google ML Crash Course",
+        "link": "https://developers.google.com/machine-learning/crash-course"
+      },
+      {
+        "title": "ML Full Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=Gv9_4yMHFhI"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Machine Learning Specialization",
+        "link": "https://www.coursera.org/specializations/machine-learning-introduction"
+      },
+      {
+        "title": "Hands-on ML - Udemy",
+        "link": "https://www.udemy.com/course/machinelearning/"
+      },
+      {
+        "title": "Deep Learning Specialization",
+        "link": "https://www.coursera.org/specializations/deep-learning"
+      }
+    ]
+  },
+
+  "SQL": {
+    "free": [
+      {
+        "title": "SQL Full Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=HXV3zeQKqGY"
+      },
+      {
+        "title": "SQL - Khan Academy",
+        "link": "https://www.khanacademy.org/computing/computer-programming/sql"
+      },
+      {
+        "title": "SQL Tutorial - W3Schools",
+        "link": "https://www.w3schools.com/sql/"
+      }
+    ],
+    "paid": [
+      {
+        "title": "SQL Bootcamp - Udemy",
+        "link": "https://www.udemy.com/course/the-complete-sql-bootcamp/"
+      },
+      {
+        "title": "SQL for Data Science",
+        "link": "https://www.coursera.org/learn/sql-data-science"
+      },
+      {
+        "title": "Advanced SQL - Udemy",
+        "link": "https://www.udemy.com/course/advanced-sql/"
+      }
+    ]
+  },
+
+  "Statistics": {
+    "free": [
+      {
+        "title": "Statistics Full Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=xxpc-HPKN28"
+      },
+      {
+        "title": "Khan Academy Statistics",
+        "link": "https://www.khanacademy.org/math/statistics-probability"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Statistics for Data Science - Coursera",
+        "link": "https://www.coursera.org/specializations/statistics"
+      }
+    ]
+  },
+
+  "HTML": {
+    "free": [
+      {
+        "title": "freeCodeCamp Web Development Course",
+        "link": "https://www.freecodecamp.org/news/learn-web-development-with-this-free-20-hour-course/"
+      },
+      {
+        "title": "The Odin Project",
+        "link": "https://www.theodinproject.com/"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Complete Web Development Bootcamp - Angela Yu",
+        "link": "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
+      }
+    ]
+  },
+
+  "CSS": {
+    "free": [
+      {
+        "title": "CSS Crash Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=OXGznpKZ_sA"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Advanced CSS - Udemy",
+        "link": "https://www.udemy.com/course/advanced-css-and-sass/"
+      }
+    ]
+  },
+
+  "JavaScript": {
+    "free": [
+      {
+        "title": "CS50 Web Programming",
+        "link": "https://pll.harvard.edu/course/cs50s-web-programming-python-and-javascript"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Meta Web Development Fundamentals",
+        "link": "https://www.coursera.org/specializations/meta-web-development-fundamentals"
+      }
+    ]
+  },
+
+  "React": {
+    "free": [],
+    "paid": [
+      {
+        "title": "Full-Stack Web Developer Bootcamp - Zero to Mastery",
+        "link": "https://www.udemy.com/course/practical-web-developer-bootcamp-zero-to-mastery/"
+      }
+    ]
+  },
+
+  "Deep Learning": {
+    "free": [
+      {
+        "title": "Deep Learning Intro - Andrew Ng",
+        "link": "https://www.coursera.org/specializations/machine-learning-introduction"
+      },
+      {
+        "title": "FastAI Course",
+        "link": "https://course.fast.ai/"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Deep Learning Specialization",
+        "link": "https://www.coursera.org/specializations/deep-learning"
+      },
+      {
+        "title": "AI Bootcamp - Udemy",
+        "link": "https://www.udemy.com/topic/artificial-intelligence/"
+      }
+    ]
+  },
+
+  "NLP": {
+    "free": [
+      {
+        "title": "HuggingFace NLP Course",
+        "link": "https://huggingface.co/learn"
+      }
+    ],
+    "paid": [
+      {
+        "title": "Stanford AI Professional Program",
+        "link": "https://online.stanford.edu/programs/artificial-intelligence-professional-program"
+      }
+    ]
+  },
+
+  "TensorFlow": {
+    "free": [
+      {
+        "title": "TensorFlow Full Course - freeCodeCamp",
+        "link": "https://www.youtube.com/watch?v=tPYj3fFJGjk"
+      },
+      {
+        "title": "TensorFlow Official Tutorials",
+        "link": "https://www.tensorflow.org/tutorials"
+      }
+    ],
+    "paid": [
+      {
+        "title": "TensorFlow Developer Certificate",
+        "link": "https://www.coursera.org/professional-certificates/tensorflow-in-practice"
+      },
+      {
+        "title": "TensorFlow Bootcamp - Udemy",
+        "link": "https://www.udemy.com/course/complete-tensorflow-2-and-keras-deep-learning-bootcamp/"
+      }
+    ]
+  }
+}

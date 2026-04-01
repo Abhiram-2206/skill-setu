@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillPilot AI — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="dashboard-page">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="/" class="nav-logo">
+            <div class="logo-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2L18 7V13L10 18L2 13V7L10 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
+                </svg>
+            </div>
+            <span>SkillPilot</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/about" class="nav-link">About</a>
+            <a href="/dashboard" class="nav-cta active-cta">Dashboard</a>
+        </div>
+    </div>
+</nav>
+
+<!-- DASHBOARD LAYOUT -->
+<div class="dashboard-layout">
+
+    <!-- INPUT PANEL -->
+    <aside class="input-panel">
+        <div class="panel-header">
+            <h2 class="panel-title">Skill Analysis</h2>
+            <p class="panel-subtitle">Enter your skills to generate your personalized roadmap</p>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2a5 5 0 110 10A5 5 0 0112 2zM2 20c0-4 4.5-7 10-7s10 3 10 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                Your Current Skills
+            </label>
+            <textarea
+                id="skills"
+                class="skill-textarea"
+                placeholder="Python, SQL, Machine Learning, Statistics..."
+                rows="5"
+            ></textarea>
+            <span class="input-hint">Separate skills with commas</span>
+        </div>
+
+        <div class="input-group">
+            <label class="input-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Target Role
+            </label>
+            <div class="select-wrapper">
+                <select id="role" class="role-select">
+                    {% for role in roles %}
+                    <option value="{{ role }}">{{ role }}</option>
+                    {% endfor %}
+                </select>
+                <svg class="select-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+
+        <button class="generate-btn" onclick="generatePath()" id="generateBtn">
+            <span class="btn-text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Generate AI Insights
+            </span>
+            <span class="btn-loading" style="display:none;">
+                <div class="spin-ring"></div>
+                Analyzing...
+            </span>
+        </button>
+
+        <div class="panel-tip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            Try: <em>Python, SQL</em> for Data Scientist role
+        </div>
+    </aside>
+
+    <!-- OUTPUT PANEL -->
+    <main class="output-panel" id="result">
+        <div class="output-placeholder">
+            <div class="placeholder-visual">
+                <div class="placeholder-ring"></div>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h3>Your AI Dashboard</h3>
+            <p>Enter your skills and target role on the left, then hit <strong>Generate AI Insights</strong> to see your personalized learning roadmap, gap analysis, timeline, and curated course recommendations.</p>
+        </div>
+    </main>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>

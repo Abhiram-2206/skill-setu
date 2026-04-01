@@ -1,0 +1,20 @@
+{
+  "Data Scientist": {
+    "Python": 3,
+    "Statistics": 2,
+    "Machine Learning": 3,
+    "SQL": 2
+  },
+  "Web Developer": {
+    "HTML": 3,
+    "CSS": 2,
+    "JavaScript": 3,
+    "React": 2
+  },
+  "AI Engineer": {
+    "Python": 3,
+    "Deep Learning": 3,
+    "NLP": 2,
+    "TensorFlow": 2
+  }
+}
