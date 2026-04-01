@@ -1,233 +1,154 @@
 {
-  "Python": {
+  "Networking": {
     "free": [
-      {
-        "title": "Python for Everybody",
-        "link": "https://www.coursera.org/specializations/python"
-      },
-      {
-        "title": "Python Full Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=rfscVS0vtbw"
-      },
-      {
-        "title": "Learn Python - Codecademy",
-        "link": "https://www.codecademy.com/learn/learn-python-3"
-      }
+      {"title": "Computer Networking - freeCodeCamp", "link": "https://www.youtube.com/watch?v=qiQR5rTSshw"}
     ],
     "paid": [
-      {
-        "title": "Complete Python Bootcamp - Udemy",
-        "link": "https://www.udemy.com/course/complete-python-bootcamp/"
-      },
-      {
-        "title": "Python for Data Science - Coursera",
-        "link": "https://www.coursera.org/learn/python-for-applied-data-science-ai"
-      },
-      {
-        "title": "100 Days of Code Python - Udemy",
-        "link": "https://www.udemy.com/course/100-days-of-code/"
-      }
+      {"title": "Networking Fundamentals - Udemy", "link": "https://www.udemy.com/course/computer-networking-fundamentals/"}
     ]
   },
 
-  "Machine Learning": {
+  "Linux": {
     "free": [
-      {
-        "title": "Machine Learning by Andrew Ng",
-        "link": "https://www.coursera.org/learn/machine-learning"
-      },
-      {
-        "title": "Google ML Crash Course",
-        "link": "https://developers.google.com/machine-learning/crash-course"
-      },
-      {
-        "title": "ML Full Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=Gv9_4yMHFhI"
-      }
+      {"title": "Linux Tutorial - freeCodeCamp", "link": "https://www.youtube.com/watch?v=iv8rSLsi1xo"}
     ],
     "paid": [
-      {
-        "title": "Machine Learning Specialization",
-        "link": "https://www.coursera.org/specializations/machine-learning-introduction"
-      },
-      {
-        "title": "Hands-on ML - Udemy",
-        "link": "https://www.udemy.com/course/machinelearning/"
-      },
-      {
-        "title": "Deep Learning Specialization",
-        "link": "https://www.coursera.org/specializations/deep-learning"
-      }
+      {"title": "Linux Mastery - Udemy", "link": "https://www.udemy.com/course/linux-mastery/"}
     ]
   },
 
-  "SQL": {
+  "Cyber Security Fundamentals": {
     "free": [
-      {
-        "title": "SQL Full Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=HXV3zeQKqGY"
-      },
-      {
-        "title": "SQL - Khan Academy",
-        "link": "https://www.khanacademy.org/computing/computer-programming/sql"
-      },
-      {
-        "title": "SQL Tutorial - W3Schools",
-        "link": "https://www.w3schools.com/sql/"
-      }
+      {"title": "Cybersecurity Full Course", "link": "https://www.youtube.com/watch?v=inWWhr5tnEA"}
     ],
     "paid": [
-      {
-        "title": "SQL Bootcamp - Udemy",
-        "link": "https://www.udemy.com/course/the-complete-sql-bootcamp/"
-      },
-      {
-        "title": "SQL for Data Science",
-        "link": "https://www.coursera.org/learn/sql-data-science"
-      },
-      {
-        "title": "Advanced SQL - Udemy",
-        "link": "https://www.udemy.com/course/advanced-sql/"
-      }
+      {"title": "Cyber Security Bootcamp", "link": "https://www.udemy.com/course/cyber-security-course/"}
     ]
   },
 
-  "Statistics": {
+  "Penetration Testing": {
     "free": [
-      {
-        "title": "Statistics Full Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=xxpc-HPKN28"
-      },
-      {
-        "title": "Khan Academy Statistics",
-        "link": "https://www.khanacademy.org/math/statistics-probability"
-      }
+      {"title": "Ethical Hacking Full Course", "link": "https://www.youtube.com/watch?v=3Kq1MIfTWCE"}
     ],
     "paid": [
-      {
-        "title": "Statistics for Data Science - Coursera",
-        "link": "https://www.coursera.org/specializations/statistics"
-      }
+      {"title": "Penetration Testing Bootcamp", "link": "https://www.udemy.com/course/penetration-testing/"}
     ]
   },
 
-  "HTML": {
+  "Data Visualization": {
     "free": [
-      {
-        "title": "freeCodeCamp Web Development Course",
-        "link": "https://www.freecodecamp.org/news/learn-web-development-with-this-free-20-hour-course/"
-      },
-      {
-        "title": "The Odin Project",
-        "link": "https://www.theodinproject.com/"
-      }
+      {"title": "Data Visualization - freeCodeCamp", "link": "https://www.youtube.com/watch?v=_7Xf-LesrkY"}
     ],
     "paid": [
-      {
-        "title": "Complete Web Development Bootcamp - Angela Yu",
-        "link": "https://www.udemy.com/course/the-complete-web-development-bootcamp/"
-      }
+      {"title": "Tableau Bootcamp", "link": "https://www.udemy.com/course/tableau-bootcamp/"}
     ]
   },
 
-  "CSS": {
+  "Excel": {
     "free": [
-      {
-        "title": "CSS Crash Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=OXGznpKZ_sA"
-      }
+      {"title": "Excel Full Course", "link": "https://www.youtube.com/watch?v=Vl0H-qTclOg"}
     ],
     "paid": [
-      {
-        "title": "Advanced CSS - Udemy",
-        "link": "https://www.udemy.com/course/advanced-css-and-sass/"
-      }
+      {"title": "Excel Advanced - Udemy", "link": "https://www.udemy.com/course/excel-advanced/"}
     ]
   },
 
-  "JavaScript": {
+  "Docker": {
     "free": [
-      {
-        "title": "CS50 Web Programming",
-        "link": "https://pll.harvard.edu/course/cs50s-web-programming-python-and-javascript"
-      }
+      {"title": "Docker Tutorial", "link": "https://www.youtube.com/watch?v=fqMOX6JJhGo"}
     ],
     "paid": [
-      {
-        "title": "Meta Web Development Fundamentals",
-        "link": "https://www.coursera.org/specializations/meta-web-development-fundamentals"
-      }
+      {"title": "Docker Mastery", "link": "https://www.udemy.com/course/docker-mastery/"}
     ]
   },
 
-  "React": {
-    "free": [],
+  "CI/CD": {
+    "free": [
+      {"title": "CI/CD Explained", "link": "https://www.youtube.com/watch?v=scEDHsr3APg"}
+    ],
     "paid": [
-      {
-        "title": "Full-Stack Web Developer Bootcamp - Zero to Mastery",
-        "link": "https://www.udemy.com/course/practical-web-developer-bootcamp-zero-to-mastery/"
-      }
+      {"title": "CI/CD Pipeline - Udemy", "link": "https://www.udemy.com/course/devops-ci-cd/"}
     ]
   },
 
-  "Deep Learning": {
+  "Cloud Computing": {
     "free": [
-      {
-        "title": "Deep Learning Intro - Andrew Ng",
-        "link": "https://www.coursera.org/specializations/machine-learning-introduction"
-      },
-      {
-        "title": "FastAI Course",
-        "link": "https://course.fast.ai/"
-      }
+      {"title": "Cloud Computing Basics", "link": "https://www.youtube.com/watch?v=2LaAJq1lB1Q"}
     ],
     "paid": [
-      {
-        "title": "Deep Learning Specialization",
-        "link": "https://www.coursera.org/specializations/deep-learning"
-      },
-      {
-        "title": "AI Bootcamp - Udemy",
-        "link": "https://www.udemy.com/topic/artificial-intelligence/"
-      }
+      {"title": "AWS Cloud Practitioner", "link": "https://www.udemy.com/course/aws-certified-cloud-practitioner/"}
     ]
   },
 
-  "NLP": {
+  "Data Structures": {
     "free": [
-      {
-        "title": "HuggingFace NLP Course",
-        "link": "https://huggingface.co/learn"
-      }
+      {"title": "DSA Full Course", "link": "https://www.youtube.com/watch?v=8hly31xKli0"}
     ],
     "paid": [
-      {
-        "title": "Stanford AI Professional Program",
-        "link": "https://online.stanford.edu/programs/artificial-intelligence-professional-program"
-      }
+      {"title": "DSA Bootcamp", "link": "https://www.udemy.com/course/data-structures-and-algorithms-bootcamp/"}
     ]
   },
 
-  "TensorFlow": {
+  "Algorithms": {
     "free": [
-      {
-        "title": "TensorFlow Full Course - freeCodeCamp",
-        "link": "https://www.youtube.com/watch?v=tPYj3fFJGjk"
-      },
-      {
-        "title": "TensorFlow Official Tutorials",
-        "link": "https://www.tensorflow.org/tutorials"
-      }
+      {"title": "Algorithms Course", "link": "https://www.youtube.com/watch?v=8hly31xKli0"}
     ],
     "paid": [
-      {
-        "title": "TensorFlow Developer Certificate",
-        "link": "https://www.coursera.org/professional-certificates/tensorflow-in-practice"
-      },
-      {
-        "title": "TensorFlow Bootcamp - Udemy",
-        "link": "https://www.udemy.com/course/complete-tensorflow-2-and-keras-deep-learning-bootcamp/"
-      }
+      {"title": "Algorithms Masterclass", "link": "https://www.udemy.com/course/algorithms-masterclass/"}
+    ]
+  },
+
+  "Java": {
+    "free": [
+      {"title": "Java Full Course", "link": "https://www.youtube.com/watch?v=eIrMbAQSU34"}
+    ],
+    "paid": [
+      {"title": "Java Programming Masterclass", "link": "https://www.udemy.com/course/java-the-complete-java-developer-course/"}
+    ]
+  },
+
+  "System Design": {
+    "free": [
+      {"title": "System Design Basics", "link": "https://www.youtube.com/watch?v=UzLMhqg3_Wc"}
+    ],
+    "paid": [
+      {"title": "System Design Course", "link": "https://www.udemy.com/course/system-design-interview/"}
+    ]
+  },
+
+  "Figma": {
+    "free": [
+      {"title": "Figma Tutorial", "link": "https://www.youtube.com/watch?v=FTFaQWZBqQ8"}
+    ],
+    "paid": [
+      {"title": "Figma UI/UX Design Course", "link": "https://www.udemy.com/course/figma-ux-ui-design/"}
+    ]
+  },
+
+  "User Research": {
+    "free": [
+      {"title": "UX Research Basics", "link": "https://www.youtube.com/watch?v=Ovj4hFxko7c"}
+    ],
+    "paid": [
+      {"title": "UX Research Course", "link": "https://www.udemy.com/course/ux-research/"}
+    ]
+  },
+
+  "Wireframing": {
+    "free": [
+      {"title": "Wireframing Guide", "link": "https://www.youtube.com/watch?v=qpH7-KFWZRI"}
+    ],
+    "paid": [
+      {"title": "Wireframing Course", "link": "https://www.udemy.com/course/wireframing/"}
+    ]
+  },
+
+  "Prototyping": {
+    "free": [
+      {"title": "Prototyping Tutorial", "link": "https://www.youtube.com/watch?v=9M6G9X6L7mY"}
+    ],
+    "paid": [
+      {"title": "Prototyping Masterclass", "link": "https://www.udemy.com/course/prototyping/"}
     ]
   }
 }
