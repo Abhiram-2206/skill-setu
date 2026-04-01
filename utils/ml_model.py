@@ -1,13 +1,21 @@
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Skill corpus (expandable)
 skill_corpus = [
     "python pandas numpy data analysis scripting",
-    "sql database queries relational database mysql",
-    "machine learning deep learning ai neural networks",
-    "statistics probability data analysis hypothesis testing",
-    "html css javascript web development frontend",
+    "sql database mysql queries",
+    "machine learning ai ml neural networks deep learning",
+    "statistics probability data analysis",
+    "html css javascript frontend web development",
+    "react frontend framework",
+    "docker containers devops",
+    "ci cd pipelines devops",
+    "cloud aws azure gcp",
+    "linux operating system",
+    "cybersecurity networking ethical hacking",
+    "data visualization charts graphs tableau",
+    "excel spreadsheets analysis",
+    "figma ui ux design prototyping"
 ]
 
 skill_labels = [
@@ -15,7 +23,16 @@ skill_labels = [
     "SQL",
     "Machine Learning",
     "Statistics",
-    "Web Development"
+    "HTML",
+    "React",
+    "Docker",
+    "CI/CD",
+    "Cloud Computing",
+    "Linux",
+    "Cyber Security Fundamentals",
+    "Data Visualization",
+    "Excel",
+    "Figma"
 ]
 
 vectorizer = TfidfVectorizer()
@@ -29,7 +46,7 @@ def match_skills(user_text):
     matched = []
 
     for i, score in enumerate(similarity):
-        if score > 0.2:   # threshold
+        if score > 0.2:
             matched.append(skill_labels[i])
 
     return matched
