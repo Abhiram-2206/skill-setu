@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillPilot AI — Dashboard</title>
+    <title>Skill Setu — Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
@@ -16,13 +16,8 @@
 <nav class="navbar" id="navbar">
     <div class="nav-inner">
         <a href="/" class="nav-logo">
-            <div class="logo-icon">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M10 2L18 7V13L10 18L2 13V7L10 2Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
-                    <circle cx="10" cy="10" r="3" fill="currentColor"/>
-                </svg>
-            </div>
-            <span>SkillPilot</span>
+            <img src="/static/logo.jpeg" alt="Skill Setu Logo" class="logo-img">
+            <span class="brand-name">Skill Setu</span>
         </a>
         <div class="nav-links">
             <a href="/" class="nav-link">Home</a>
@@ -49,13 +44,20 @@
                 </svg>
                 Your Current Skills
             </label>
-            <textarea
-                id="skills"
-                class="skill-textarea"
-                placeholder="Python, SQL, Machine Learning, Statistics..."
-                rows="5"
-            ></textarea>
-            <span class="input-hint">Separate skills with commas</span>
+            <div class="skill-multiselect" id="skillMultiSelect">
+                <div class="skill-tags-wrap" id="skillTagsWrap">
+                    <input
+                        type="text"
+                        id="skillSearchInput"
+                        class="skill-search-input"
+                        placeholder="Type to search skills..."
+                        autocomplete="off"
+                    >
+                </div>
+                <div class="skill-dropdown" id="skillDropdown"></div>
+            </div>
+            <input type="hidden" id="skills">
+            <span class="input-hint">Search or type any skill — select multiple</span>
         </div>
 
         <div class="input-group">
@@ -89,14 +91,6 @@
                 Analyzing...
             </span>
         </button>
-
-        <div class="panel-tip">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
-                <path d="M12 16v-4M12 8h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            Try: <em>Python, SQL</em> for Data Scientist role
-        </div>
     </aside>
 
     <!-- OUTPUT PANEL -->

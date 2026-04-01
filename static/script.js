@@ -30,9 +30,196 @@
     els.forEach(el => obs.observe(el));
 })();
 
+// ---- SKILL MULTI-SELECT COMPONENT ----
+(function () {
+    const SUGGESTED_SKILLS = [
+        'Python','SQL','Machine Learning','Statistics','Deep Learning','NLP',
+        'TensorFlow','HTML','CSS','JavaScript','React','Networking','Linux',
+        'Cyber Security Fundamentals','Penetration Testing','Data Structures',
+        'Algorithms','Java','System Design','Figma','User Research','Wireframing',
+        'Prototyping','Docker','CI/CD','Cloud Computing','Data Visualization','Excel',
+        'NumPy','Pandas','Data Analysis','Frontend'
+    ];
+
+    const wrap     = document.getElementById('skillTagsWrap');
+    const input    = document.getElementById('skillSearchInput');
+    const dropdown = document.getElementById('skillDropdown');
+    const hidden   = document.getElementById('skills');
+
+    if (!wrap || !input || !dropdown || !hidden) return;
+
+    let selected = [];
+    let focusedIdx = -1;
+
+    function syncHidden() {
+        hidden.value = selected.join(', ');
+    }
+
+    function renderTags() {
+        // Remove old tags (keep input)
+        [...wrap.querySelectorAll('.skill-tag')].forEach(t => t.remove());
+        selected.forEach(skill => {
+            const tag = document.createElement('span');
+            tag.className = 'skill-tag';
+            tag.innerHTML = `${skill}<button class="skill-tag-remove" data-skill="${skill}" aria-label="Remove ${skill}">✕</button>`;
+            wrap.insertBefore(tag, input);
+        });
+        syncHidden();
+    }
+
+    function addSkill(skill) {
+        const s = skill.trim();
+        if (!s || selected.includes(s)) return;
+        selected.push(s);
+        renderTags();
+        input.value = '';
+        renderDropdown('');
+    }
+
+    function removeSkill(skill) {
+        selected = selected.filter(s => s !== skill);
+        renderTags();
+        renderDropdown(input.value);
+    }
+
+    function getFiltered(query) {
+        const q = query.toLowerCase();
+        return SUGGESTED_SKILLS.filter(s =>
+            s.toLowerCase().includes(q)
+        );
+    }
+
+    function renderDropdown(query) {
+        const filtered = getFiltered(query);
+        focusedIdx = -1;
+
+        if (!query && filtered.length === 0) {
+            dropdown.classList.remove('open');
+            return;
+        }
+
+        let html = '<div class="skill-dropdown-inner">';
+        if (filtered.length === 0) {
+            html += `<div class="skill-dropdown-empty">No matches — press Enter to add "<strong>${query}</strong>"</div>`;
+        } else {
+            filtered.forEach((skill, i) => {
+                const isSel = selected.includes(skill);
+                html += `
+                <div class="skill-option${isSel ? ' selected' : ''}" data-skill="${skill}" data-idx="${i}" role="option" aria-selected="${isSel}">
+                    <span>${highlightMatch(skill, query)}</span>
+                    <span class="skill-option-check">
+                        <svg width="9" height="7" viewBox="0 0 9 7" fill="none">
+                            <path d="M1 3.5L3.5 6L8 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </div>`;
+            });
+        }
+
+        // "Add custom" option if query not in list
+        if (query && !SUGGESTED_SKILLS.map(s=>s.toLowerCase()).includes(query.toLowerCase())) {
+            html += `<div class="skill-dropdown-add" data-custom="${query}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Add "<strong>${query}</strong>"
+            </div>`;
+        }
+
+        html += '</div>';
+        dropdown.innerHTML = html;
+        dropdown.classList.add('open');
+    }
+
+    function highlightMatch(text, query) {
+        if (!query) return text;
+        const idx = text.toLowerCase().indexOf(query.toLowerCase());
+        if (idx === -1) return text;
+        return text.slice(0, idx) +
+               `<mark style="background:rgba(79,70,229,0.15);color:var(--accent);border-radius:3px;padding:0 1px">${text.slice(idx, idx + query.length)}</mark>` +
+               text.slice(idx + query.length);
+    }
+
+    function closeDropdown() {
+        dropdown.classList.remove('open');
+        focusedIdx = -1;
+    }
+
+    // --- Events ---
+    wrap.addEventListener('click', e => {
+        // Click on tag remove btn
+        const removeBtn = e.target.closest('.skill-tag-remove');
+        if (removeBtn) {
+            removeSkill(removeBtn.dataset.skill);
+            return;
+        }
+        input.focus();
+    });
+
+    input.addEventListener('input', () => {
+        renderDropdown(input.value.trim());
+    });
+
+    input.addEventListener('focus', () => {
+        renderDropdown(input.value.trim());
+    });
+
+    input.addEventListener('keydown', e => {
+        const options = dropdown.querySelectorAll('.skill-option');
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            focusedIdx = Math.min(focusedIdx + 1, options.length - 1);
+            options.forEach((o, i) => o.classList.toggle('focused', i === focusedIdx));
+            return;
+        }
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            focusedIdx = Math.max(focusedIdx - 1, 0);
+            options.forEach((o, i) => o.classList.toggle('focused', i === focusedIdx));
+            return;
+        }
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (focusedIdx >= 0 && options[focusedIdx]) {
+                const skill = options[focusedIdx].dataset.skill;
+                selected.includes(skill) ? removeSkill(skill) : addSkill(skill);
+            } else if (input.value.trim()) {
+                addSkill(input.value.trim());
+            }
+            return;
+        }
+        if (e.key === 'Backspace' && !input.value && selected.length > 0) {
+            removeSkill(selected[selected.length - 1]);
+            return;
+        }
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+
+    dropdown.addEventListener('mousedown', e => {
+        e.preventDefault(); // keep focus on input
+        const opt = e.target.closest('.skill-option');
+        if (opt) {
+            const skill = opt.dataset.skill;
+            selected.includes(skill) ? removeSkill(skill) : addSkill(skill);
+            return;
+        }
+        const add = e.target.closest('.skill-dropdown-add');
+        if (add) {
+            addSkill(add.dataset.custom);
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('#skillMultiSelect')) closeDropdown();
+    });
+})();
+
 // ---- DASHBOARD GENERATE ----
 async function generatePath() {
     const skillsInput = document.getElementById('skills');
+    const multiSelect = document.getElementById('skillMultiSelect');
     const roleInput   = document.getElementById('role');
     const btn         = document.getElementById('generateBtn');
     const resultEl    = document.getElementById('result');
@@ -47,7 +234,7 @@ async function generatePath() {
     const role = roleInput.value;
 
     if (skills.length === 0) {
-        shakeEl(skillsInput);
+        shakeEl(multiSelect || skillsInput);
         return;
     }
 
