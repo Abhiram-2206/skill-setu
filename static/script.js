@@ -38,7 +38,9 @@
         'Cyber Security Fundamentals','Penetration Testing','Data Structures',
         'Algorithms','Java','System Design','Figma','User Research','Wireframing',
         'Prototyping','Docker','CI/CD','Cloud Computing','Data Visualization','Excel',
-        'NumPy','Pandas','Data Analysis','Frontend'
+        'NumPy','Pandas','Data Analysis','Frontend',
+        'Node.js','MySQL','PostgreSQL','MongoDB',
+        'None'
     ];
 
     const wrap     = document.getElementById('skillTagsWrap');

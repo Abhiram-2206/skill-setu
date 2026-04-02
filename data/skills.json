@@ -5,49 +5,44 @@
     "Machine Learning": 3,
     "SQL": 2
   },
-
   "Web Developer": {
     "HTML": 3,
     "CSS": 2,
     "JavaScript": 3,
-    "React": 2
+    "React": 2,
+    "Node.js": 2,
+    "SQL/NoSQL": 2
   },
-
   "AI Engineer": {
     "Python": 3,
     "Deep Learning": 3,
     "NLP": 2,
     "TensorFlow": 2
   },
-
   "Cybersecurity Engineer": {
     "Networking": 3,
     "Linux": 2,
     "Cyber Security Fundamentals": 3,
     "Penetration Testing": 2
   },
-
   "Data Analyst": {
     "Python": 3,
     "SQL": 3,
     "Data Visualization": 2,
     "Excel": 2
   },
-
   "DevOps Engineer": {
     "Linux": 3,
     "Docker": 2,
     "CI/CD": 3,
     "Cloud Computing": 2
   },
-
   "Software Engineer": {
     "Data Structures": 3,
     "Algorithms": 3,
     "Java": 2,
     "System Design": 2
   },
-
   "UI/UX Designer": {
     "Figma": 3,
     "User Research": 2,

@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import json
 
-from utils.logic import generate_learning_path, generate_timeline
+from utils.logic import generate_learning_path, generate_timeline, SKILL_ALIASES
 from utils.ml_model import match_skills
 from database import init_db, get_connection
 
@@ -18,13 +18,22 @@ with open('data/courses.json') as f:
 
 
 def generate_resume_feedback(user_skills, target_role, skill_data):
-    user_skills = [s.lower() for s in user_skills]
+    # Filter out None — absolute beginner marker carries no skill credit
+    user_skills_lower = [s.lower() for s in user_skills if s.strip().lower() != "none"]
+
+    # Expand aliases (list-based): mysql/postgresql -> sql + sql/nosql, etc.
+    user_skills_expanded = set(user_skills_lower)
+    for s in user_skills_lower:
+        if s in SKILL_ALIASES:
+            for canonical in SKILL_ALIASES[s]:
+                user_skills_expanded.add(canonical)
+
     required_skills = skill_data[target_role]
 
     feedback = []
 
     for skill in required_skills:
-        if skill.lower() not in user_skills:
+        if skill.lower() not in user_skills_expanded:
             feedback.append(f"You should learn {skill} to improve your profile.")
 
     if not feedback:
@@ -82,7 +91,37 @@ def generate():
 
     feedback = generate_resume_feedback(user_skills, target_role, skill_data)
 
-    confidence = score - 5 if score > 50 else score + 5
+    # Confidence = how certain the AI is about its assessment.
+    # Driven by 3 independent signals — not derived from score:
+    #   1. Input richness: more skills provided = more data to reason from
+    #   2. Skill relevance: how many user skills directly match role requirements
+    #   3. Specificity: ratio of role-relevant skills vs total skills given
+    required_skills = skill_data[target_role]
+    required_lower = {s.lower() for s in required_skills}
+
+    from utils.logic import SKILL_ALIASES
+    user_skills_lower = [s.strip().lower() for s in user_skills if s.strip().lower() != "none"]
+    user_skills_expanded = set(user_skills_lower)
+    for s in user_skills_lower:
+        if s in SKILL_ALIASES:
+            for canonical in SKILL_ALIASES[s]:
+                user_skills_expanded.add(canonical)
+
+    # Signal 1: input richness — more skills typed = AI has more to work with (caps at 40pts)
+    raw_skill_count = len([s for s in raw_skills if s.strip().lower() != "none"])
+    richness = min(raw_skill_count / max(len(required_skills), 1), 1.0) * 40
+
+    # Signal 2: direct role relevance — matched skills / total required (caps at 45pts)
+    matched_count = sum(1 for r in required_lower if r in user_skills_expanded)
+    relevance = (matched_count / len(required_skills)) * 45
+
+    # Signal 3: specificity — what fraction of user skills are role-relevant (caps at 15pts)
+    if user_skills_expanded:
+        specificity = (matched_count / len(user_skills_expanded)) * 15
+    else:
+        specificity = 0
+
+    confidence = min(int(richness + relevance + specificity), 99)
 
     # 🔥 DATABASE SAVE
     conn = get_connection()

@@ -1,5 +1,25 @@
+
+# Maps user-typed skill variants → list of canonical keys they satisfy in skills.json
+SKILL_ALIASES = {
+    "mysql":      ["sql", "sql/nosql"],
+    "postgresql": ["sql", "sql/nosql"],
+    "postgres":   ["sql", "sql/nosql"],
+    "mongodb":    ["sql/nosql"],
+    "nosql":      ["sql/nosql"],
+    "none":       [],   # absolute beginner — credits nothing
+}
+
+
 def generate_learning_path(user_skills, target_role, skill_data):
-    user_skills = [s.strip().lower() for s in user_skills]
+    # Filter out 'None' — it carries no actual skill credit
+    user_skills_raw = [s.strip().lower() for s in user_skills if s.strip().lower() != "none"]
+
+    # Expand aliases: each alias maps to a list of canonical keys it satisfies
+    user_skills_expanded = set(user_skills_raw)
+    for s in user_skills_raw:
+        if s in SKILL_ALIASES:
+            for canonical in SKILL_ALIASES[s]:
+                user_skills_expanded.add(canonical)
 
     required_skills = skill_data[target_role]
 
@@ -9,7 +29,7 @@ def generate_learning_path(user_skills, target_role, skill_data):
     missing_skills = []
 
     for skill, weight in required_skills.items():
-        if skill.lower() in user_skills:
+        if skill.lower() in user_skills_expanded:
             user_score += weight
         else:
             missing_skills.append((skill, weight))
@@ -31,7 +51,7 @@ def generate_learning_path(user_skills, target_role, skill_data):
     return learning_path, missing_skill_names, score
 
 
-# 🔥 FIXED TIMELINE (ORDER + REALISTIC)
+# FIXED TIMELINE (ORDER + REALISTIC)
 def generate_timeline(missing_skills):
 
     ideal_order = [
@@ -69,7 +89,7 @@ def generate_timeline(missing_skills):
             current_month += 1
         else:
             timeline.append({
-                "month": f"Month {current_month}–{current_month + duration - 1}",
+                "month": f"Month {current_month}\u2013{current_month + duration - 1}",
                 "skills": [skill]
             })
             current_month += duration
