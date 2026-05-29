@@ -21,8 +21,39 @@
         <div class="nav-links">
             <a href="/" class="nav-link">Home</a>
             <a href="/about" class="nav-link active">About</a>
+            <a href="/resume" class="nav-link">Resume Analyser</a>
             <a href="/dashboard" class="nav-cta">Launch App →</a>
+            <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+                <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
+            {% if current_user.is_authenticated %}
+            <div class="user-menu">
+                <button class="user-menu-btn" id="userMenuBtn">
+                    <div class="user-avatar-circle">{{ current_user.name[0]|upper }}</div>
+                    <span class="user-menu-name">{{ current_user.name.split()[0] }}</span>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="user-dropdown" id="userDropdown">
+                    <div class="user-dropdown-info">
+                        <div class="user-avatar-circle user-avatar-lg">{{ current_user.name[0]|upper }}</div>
+                        <div>
+                            <div class="user-dropdown-name">{{ current_user.name }}</div>
+                            <div class="user-dropdown-email">{{ current_user.email }}</div>
+                        </div>
+                    </div>
+                    <div class="user-dropdown-divider"></div>
+                    <a href="/logout" class="user-dropdown-item user-dropdown-logout">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Sign out
+                    </a>
+                </div>
+            </div>
+            {% else %}
+            <a href="/login" class="nav-link">Login</a>
+            {% endif %}
         </div>
+
     </div>
 </nav>
 

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skill Setu — Dashboard</title>
+    <title>Skill Setu — Resume Analyser</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -22,8 +22,8 @@
         <div class="nav-links">
             <a href="/" class="nav-link">Home</a>
             <a href="/about" class="nav-link">About</a>
-            <a href="/resume" class="nav-link">Resume Analyser</a>
-            <a href="/dashboard" class="nav-cta active-cta">Dashboard</a>
+            <a href="/resume" class="nav-link active">Resume Analyser</a>
+            <a href="/dashboard" class="nav-cta">Dashboard</a>
             <button class="theme-toggle" id="themeToggle" title="Toggle theme">
                 <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 109.79 9.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" style="display:none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -64,31 +64,49 @@
     <!-- INPUT PANEL -->
     <aside class="input-panel">
         <div class="panel-header">
-            <h2 class="panel-title">Skill Analysis</h2>
-            <p class="panel-subtitle">Enter your skills to generate your personalized roadmap</p>
+            <h2 class="panel-title">Resume Analyser</h2>
+            <p class="panel-subtitle">Paste your resume and get an AI-powered ATS score, keyword analysis, and actionable suggestions.</p>
         </div>
 
-        <div class="input-group">
-            <label class="input-label">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2a5 5 0 110 10A5 5 0 0112 2zM2 20c0-4 4.5-7 10-7s10 3 10 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-                Your Current Skills
-            </label>
-            <div class="skill-multiselect" id="skillMultiSelect">
-                <div class="skill-tags-wrap" id="skillTagsWrap">
-                    <input
-                        type="text"
-                        id="skillSearchInput"
-                        class="skill-search-input"
-                        placeholder="Type to search skills..."
-                        autocomplete="off"
-                    >
+        <!-- Input mode tabs -->
+        <div class="resume-tabs">
+            <button class="resume-tab active" id="tabPaste" onclick="switchTab('paste')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Paste Text
+            </button>
+            <button class="resume-tab" id="tabUpload" onclick="switchTab('upload')">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Upload PDF
+            </button>
+        </div>
+
+        <!-- Paste mode -->
+        <div class="input-group" id="pasteMode">
+            <label class="input-label">Resume Text</label>
+            <textarea
+                id="resumeText"
+                class="skill-textarea resume-textarea"
+                placeholder="Paste your resume content here...
+
+Name, contact details
+Work experience, education,
+skills, certifications, projects..."
+                rows="12"
+            ></textarea>
+            <span class="input-hint">Plain text gives the best results. Paste from Word or PDF.</span>
+        </div>
+
+        <!-- Upload mode -->
+        <div class="input-group" id="uploadMode" style="display:none">
+            <label class="input-label">Upload PDF Resume</label>
+            <div class="pdf-drop-zone" id="pdfDropZone" onclick="document.getElementById('resumePdf').click()">
+                <input type="file" id="resumePdf" accept=".pdf" style="display:none" onchange="handlePdfSelect(this)">
+                <div class="pdf-drop-inner" id="pdfDropInner">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 13h6M9 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <p class="pdf-drop-text">Click to choose a PDF</p>
+                    <p class="pdf-drop-hint">or drag and drop here</p>
                 </div>
-                <div class="skill-dropdown" id="skillDropdown"></div>
             </div>
-            <input type="hidden" id="skills">
-            <span class="input-hint">Search or type any skill — select multiple</span>
         </div>
 
         <div class="input-group">
@@ -96,10 +114,11 @@
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
                     <path d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Target Role
+                Target Job Role
             </label>
             <div class="select-wrapper">
-                <select id="role" class="role-select">
+                <select id="targetRole" class="role-select">
+                    <option value="">— Optional: select role —</option>
                     {% for role in roles %}
                     <option value="{{ role }}">{{ role }}</option>
                     {% endfor %}
@@ -110,36 +129,52 @@
             </div>
         </div>
 
-        <button class="generate-btn" onclick="generatePath()" id="generateBtn">
+        <div class="input-group">
+            <label class="input-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Job Description <span style="font-weight:400;text-transform:none;font-size:11px;color:var(--text-3)">(optional)</span>
+            </label>
+            <textarea
+                id="jobDescription"
+                class="skill-textarea"
+                placeholder="Paste the job description to get role-specific ATS keyword matching..."
+                rows="5"
+            ></textarea>
+        </div>
+
+        <button class="generate-btn" onclick="analyseResume()" id="resumeBtn">
             <span class="btn-text">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-                Generate AI Insights
+                Analyse Resume
             </span>
             <span class="btn-loading" style="display:none;">
                 <div class="spin-ring"></div>
-                Analyzing...
+                Analysing...
             </span>
         </button>
     </aside>
 
     <!-- OUTPUT PANEL -->
-    <main class="output-panel" id="result">
+    <main class="output-panel" id="resumeResult">
         <div class="output-placeholder">
             <div class="placeholder-visual">
                 <div class="placeholder-ring"></div>
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                    <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
             </div>
-            <h3>Your AI Dashboard</h3>
-            <p>Enter your skills and target role on the left, then hit <strong>Generate AI Insights</strong> to see your personalized learning roadmap, gap analysis, timeline, and curated course recommendations.</p>
+            <h3>Your Resume Report</h3>
+            <p>Paste your resume on the left and hit <strong>Analyse Resume</strong> to get your ATS score, keyword gaps, strengths, and detailed improvement suggestions — all powered by AI.</p>
         </div>
     </main>
 
 </div>
 
 <script src="/static/script.js"></script>
+<script src="/static/resume.js"></script>
 </body>
 </html>

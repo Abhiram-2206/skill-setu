@@ -593,3 +593,59 @@ function sleep(ms) {
     `;
     document.head.appendChild(s);
 })();
+
+/* ============================================================
+   DARK MODE TOGGLE
+   ============================================================ */
+
+(function () {
+    const STORAGE_KEY = 'skillsetu-theme';
+
+    function applyTheme(dark) {
+        document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+        const moon = document.querySelector('.icon-moon');
+        const sun  = document.querySelector('.icon-sun');
+        if (moon) moon.style.display = dark ? 'none'  : '';
+        if (sun)  sun.style.display  = dark ? ''      : 'none';
+    }
+
+    // Restore saved preference immediately
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved !== null ? saved === 'dark' : prefersDark;
+    applyTheme(isDark);
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+
+        // Re-apply after DOM ready (icons might not exist yet)
+        applyTheme(document.documentElement.getAttribute('data-theme') === 'dark');
+
+        btn.addEventListener('click', function () {
+            const nowDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const next = !nowDark;
+            applyTheme(next);
+            localStorage.setItem(STORAGE_KEY, next ? 'dark' : 'light');
+        });
+    });
+})();
+
+/* ============================================================
+   USER DROPDOWN
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', function () {
+    const menuBtn  = document.getElementById('userMenuBtn');
+    const dropdown = document.getElementById('userDropdown');
+    if (!menuBtn || !dropdown) return;
+
+    menuBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
+
+    document.addEventListener('click', function () {
+        dropdown.classList.remove('open');
+    });
+});
