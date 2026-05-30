@@ -127,20 +127,6 @@ Open your browser at **http://127.0.0.1:5000**
 4. Authorised redirect URI: `http://localhost:5000/auth/google/callback`
 5. Copy Client ID and Secret to `.env`
 
-### LinkedIn OAuth (optional)
-1. Go to [linkedin.com/developers](https://www.linkedin.com/developers)
-2. Create an app → **Auth → OAuth 2.0 settings**
-3. Redirect URL: `http://localhost:5000/auth/linkedin/callback`
-
-### Facebook OAuth (optional)
-1. Go to [developers.facebook.com](https://developers.facebook.com)
-2. Create an app → **Facebook Login → Settings**
-3. Valid OAuth Redirect URI: `http://localhost:5000/auth/facebook/callback`
-
-### Yahoo OAuth (optional)
-1. Go to [developer.yahoo.com](https://developer.yahoo.com)
-2. Create an app, set redirect URI: `http://localhost:5000/auth/yahoo/callback`
-
 ---
 
 ## Environment Variables Reference
