@@ -27,37 +27,6 @@ def init_oauth(app):
         client_kwargs={'scope': 'openid email profile'},
     )
 
-    oauth.register(
-        name='linkedin',
-        client_id=os.environ.get('LINKEDIN_CLIENT_ID'),
-        client_secret=os.environ.get('LINKEDIN_CLIENT_SECRET'),
-        access_token_url='https://www.linkedin.com/oauth/v2/accessToken',
-        authorize_url='https://www.linkedin.com/oauth/v2/authorization',
-        api_base_url='https://api.linkedin.com/v2/',
-        client_kwargs={'scope': 'openid profile email'},
-    )
-
-    oauth.register(
-        name='facebook',
-        client_id=os.environ.get('FACEBOOK_CLIENT_ID'),
-        client_secret=os.environ.get('FACEBOOK_CLIENT_SECRET'),
-        access_token_url='https://graph.facebook.com/oauth/access_token',
-        authorize_url='https://www.facebook.com/dialog/oauth',
-        api_base_url='https://graph.facebook.com/',
-        client_kwargs={'scope': 'email,public_profile'},
-    )
-
-    oauth.register(
-        name='yahoo',
-        client_id=os.environ.get('YAHOO_CLIENT_ID'),
-        client_secret=os.environ.get('YAHOO_CLIENT_SECRET'),
-        access_token_url='https://api.login.yahoo.com/oauth2/get_token',
-        authorize_url='https://api.login.yahoo.com/oauth2/request_auth',
-        api_base_url='https://api.login.yahoo.com/',
-        client_kwargs={'scope': 'openid email profile'},
-        jwks_uri='https://login.yahoo.com/.well-known/openid-configuration',
-    )
-
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -184,7 +153,7 @@ def logout():
 
 @auth_bp.route('/auth/<provider>')
 def oauth_login(provider):
-    if provider not in ('google', 'linkedin', 'facebook', 'yahoo'):
+    if provider not in ('google',):
         return redirect(url_for('auth.login'))
     client   = oauth.create_client(provider)
     redirect_uri = url_for('auth.oauth_callback', provider=provider, _external=True)
@@ -193,7 +162,7 @@ def oauth_login(provider):
 
 @auth_bp.route('/auth/<provider>/callback')
 def oauth_callback(provider):
-    if provider not in ('google', 'linkedin', 'facebook', 'yahoo'):
+    if provider not in ('google',):
         return redirect(url_for('auth.login'))
 
     client = oauth.create_client(provider)
@@ -208,27 +177,6 @@ def oauth_callback(provider):
     try:
         if provider == 'google':
             userinfo    = token.get('userinfo') or client.userinfo()
-            name        = userinfo.get('name')
-            email       = userinfo.get('email')
-            provider_id = userinfo.get('sub')
-            avatar_url  = userinfo.get('picture')
-
-        elif provider == 'linkedin':
-            me   = client.get('https://api.linkedin.com/v2/userinfo').json()
-            name = (me.get('given_name', '') + ' ' + me.get('family_name', '')).strip()
-            email       = me.get('email')
-            provider_id = me.get('sub')
-            avatar_url  = me.get('picture')
-
-        elif provider == 'facebook':
-            me   = client.get('me?fields=id,name,email,picture').json()
-            name        = me.get('name')
-            email       = me.get('email')
-            provider_id = me.get('id')
-            avatar_url  = me.get('picture', {}).get('data', {}).get('url')
-
-        elif provider == 'yahoo':
-            userinfo    = client.userinfo()
             name        = userinfo.get('name')
             email       = userinfo.get('email')
             provider_id = userinfo.get('sub')

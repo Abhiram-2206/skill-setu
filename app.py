@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from flask_login import LoginManager, UserMixin, current_user
+from flask_login import LoginManager, UserMixin, current_user, login_required
 from dotenv import load_dotenv
 import json
 import os
@@ -106,6 +106,7 @@ def home():
 
 
 @app.route('/dashboard')
+@login_required
 def dashboard():
     roles = list(skill_data.keys())
     return render_template('dashboard.html', roles=roles)
@@ -198,6 +199,7 @@ def history():
 # ── Resume Analyser ────────────────────────────────────────────────────────────
 
 @app.route('/resume')
+@login_required
 def resume():
     roles = list(skill_data.keys())
     return render_template('resume.html', roles=roles)

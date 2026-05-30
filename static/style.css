@@ -2174,8 +2174,12 @@ h1, h2, h3, h4 {
 
 /* generate-btn (Analyse / Generate buttons) */
 [data-theme="dark"] .generate-btn {
-    /* gradient already works well in dark mode — no change needed */
+    background: var(--accent);
     color: #ffffff;
+}
+[data-theme="dark"] .generate-btn:hover {
+    background: var(--accent-2);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
 }
 
 /* oauth buttons in dark mode */
