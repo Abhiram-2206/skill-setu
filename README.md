@@ -105,22 +105,6 @@ Open your browser at **http://127.0.0.1:5000**
 
 ---
 
-## Getting API Keys
-
-### Groq (required for Resume Analyser)
-1. Sign up at [console.groq.com](https://console.groq.com)
-2. Go to **API Keys → Create API Key**
-3. Free tier gives 14,400 requests/day — no credit card needed
-
-### Google OAuth (optional)
-1. Go to [console.cloud.google.com](https://console.cloud.google.com)
-2. Create a project → **APIs & Services → Credentials → Create OAuth 2.0 Client ID**
-3. Application type: **Web application**
-4. Authorised redirect URI: `http://localhost:5000/auth/google/callback`
-5. Copy Client ID and Secret to `.env`
-
----
-
 ## Environment Variables Reference
 
 | Variable | Required | Description |
@@ -129,12 +113,6 @@ Open your browser at **http://127.0.0.1:5000**
 | `GROQ_API_KEY` | ✅ Yes | Groq API key for resume analysis |
 | `GOOGLE_CLIENT_ID` | Optional | Google OAuth client ID |
 | `GOOGLE_CLIENT_SECRET` | Optional | Google OAuth client secret |
-| `LINKEDIN_CLIENT_ID` | Optional | LinkedIn OAuth client ID |
-| `LINKEDIN_CLIENT_SECRET` | Optional | LinkedIn OAuth client secret |
-| `FACEBOOK_CLIENT_ID` | Optional | Facebook app ID |
-| `FACEBOOK_CLIENT_SECRET` | Optional | Facebook app secret |
-| `YAHOO_CLIENT_ID` | Optional | Yahoo OAuth client ID |
-| `YAHOO_CLIENT_SECRET` | Optional | Yahoo OAuth client secret |
 
 ---
 
