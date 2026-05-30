@@ -88,14 +88,6 @@ GROQ_API_KEY=gsk_your-groq-key-here
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-LINKEDIN_CLIENT_ID=your-linkedin-client-id
-LINKEDIN_CLIENT_SECRET=your-linkedin-client-secret
-
-FACEBOOK_CLIENT_ID=your-facebook-app-id
-FACEBOOK_CLIENT_SECRET=your-facebook-app-secret
-
-YAHOO_CLIENT_ID=your-yahoo-client-id
-YAHOO_CLIENT_SECRET=your-yahoo-client-secret
 ```
 
 Generate a secure `SECRET_KEY` with:
