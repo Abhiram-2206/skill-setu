@@ -8,7 +8,7 @@
 
 - **Skill Gap Analyser** — Enter your current skills and a target role; the AI maps what you're missing and generates a prioritised learning path with recommended courses and a realistic timeline.
 - **AI Resume Analyser** — Upload a PDF or paste your resume to get an ATS score (0–100), keyword gap analysis, section-by-section breakdown, strengths, and actionable improvement suggestions — powered by Groq (LLaMA 3.3 70B).
-- **User Authentication** — Register and log in with email/password or via Google, LinkedIn, Facebook, and Yahoo OAuth.
+- **User Authentication** — Register and log in with email/password or via Google OAuth.
 - **Dark / Light Mode** — Toggle between themes; preference is saved in the browser.
 
 ---
