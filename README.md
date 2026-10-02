@@ -8,7 +8,7 @@
 
 - **Skill Gap Analyser** — Enter your current skills and a target role; the AI maps what you're missing and generates a prioritised learning path with recommended courses and a realistic timeline.
 - **AI Resume Analyser** — Upload a PDF or paste your resume to get an ATS score (0–100), keyword gap analysis, section-by-section breakdown, strengths, and actionable improvement suggestions — powered by Groq (LLaMA 3.3 70B).
-- **User Authentication** — Register and log in with email/password or via Google, LinkedIn, Facebook, and Yahoo OAuth.
+- **User Authentication** — Register and log in with email/password or via Google OAuth.
 - **Dark / Light Mode** — Toggle between themes; preference is saved in the browser.
 
 ---
@@ -88,14 +88,6 @@ GROQ_API_KEY=gsk_your-groq-key-here
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
 
-LINKEDIN_CLIENT_ID=your-linkedin-client-id
-LINKEDIN_CLIENT_SECRET=your-linkedin-client-secret
-
-FACEBOOK_CLIENT_ID=your-facebook-app-id
-FACEBOOK_CLIENT_SECRET=your-facebook-app-secret
-
-YAHOO_CLIENT_ID=your-yahoo-client-id
-YAHOO_CLIENT_SECRET=your-yahoo-client-secret
 ```
 
 Generate a secure `SECRET_KEY` with:
@@ -113,36 +105,6 @@ Open your browser at **http://127.0.0.1:5000**
 
 ---
 
-## Getting API Keys
-
-### Groq (required for Resume Analyser)
-1. Sign up at [console.groq.com](https://console.groq.com)
-2. Go to **API Keys → Create API Key**
-3. Free tier gives 14,400 requests/day — no credit card needed
-
-### Google OAuth (optional)
-1. Go to [console.cloud.google.com](https://console.cloud.google.com)
-2. Create a project → **APIs & Services → Credentials → Create OAuth 2.0 Client ID**
-3. Application type: **Web application**
-4. Authorised redirect URI: `http://localhost:5000/auth/google/callback`
-5. Copy Client ID and Secret to `.env`
-
-### LinkedIn OAuth (optional)
-1. Go to [linkedin.com/developers](https://www.linkedin.com/developers)
-2. Create an app → **Auth → OAuth 2.0 settings**
-3. Redirect URL: `http://localhost:5000/auth/linkedin/callback`
-
-### Facebook OAuth (optional)
-1. Go to [developers.facebook.com](https://developers.facebook.com)
-2. Create an app → **Facebook Login → Settings**
-3. Valid OAuth Redirect URI: `http://localhost:5000/auth/facebook/callback`
-
-### Yahoo OAuth (optional)
-1. Go to [developer.yahoo.com](https://developer.yahoo.com)
-2. Create an app, set redirect URI: `http://localhost:5000/auth/yahoo/callback`
-
----
-
 ## Environment Variables Reference
 
 | Variable | Required | Description |
@@ -151,12 +113,6 @@ Open your browser at **http://127.0.0.1:5000**
 | `GROQ_API_KEY` | ✅ Yes | Groq API key for resume analysis |
 | `GOOGLE_CLIENT_ID` | Optional | Google OAuth client ID |
 | `GOOGLE_CLIENT_SECRET` | Optional | Google OAuth client secret |
-| `LINKEDIN_CLIENT_ID` | Optional | LinkedIn OAuth client ID |
-| `LINKEDIN_CLIENT_SECRET` | Optional | LinkedIn OAuth client secret |
-| `FACEBOOK_CLIENT_ID` | Optional | Facebook app ID |
-| `FACEBOOK_CLIENT_SECRET` | Optional | Facebook app secret |
-| `YAHOO_CLIENT_ID` | Optional | Yahoo OAuth client ID |
-| `YAHOO_CLIENT_SECRET` | Optional | Yahoo OAuth client secret |
 
 ---
 
